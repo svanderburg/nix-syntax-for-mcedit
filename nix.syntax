@@ -1,0 +1,121 @@
+#
+# Nix expression language syntax highlighting
+# for MC Editor/CoolEdit
+#
+# Author: Sander van der Burg <svanderburg at gmail>
+#
+# Inspired by c.syntax, js.syntax and sh.syntax
+
+context default
+    # Comments
+    keyword /\* brown
+    keyword \*/ brown
+    keyword \# brown
+
+    # Keywords
+    keyword whole if yellow
+    keyword whole then yellow
+    keyword whole else yellow
+    keyword whole assert yellow
+    keyword whole with yellow
+    keyword whole let yellow
+    keyword whole in yellow
+    keyword whole rec yellow
+    keyword whole inherit yellow
+    keyword whole or yellow
+
+    # Operators
+    keyword \=\= yellow
+    keyword \!\= yellow
+    keyword \<\= yellow
+    keyword \>\= yellow
+    keyword \&\& yellow
+    keyword \|\| yellow
+    keyword \/\/ yellow
+    keyword \+\+ yellow
+
+    # Numbers (integers and floats)
+    keyword whole \{0123456789\}\[0123456789\] brightgreen
+    keyword whole \[0123456789\]\.\{0123456789\}\[0123456789\] brightgreen
+    keyword whole \{0123456789\}\[0123456789\]\.\[0123456789\] brightgreen
+    keyword whole \{0123456789\}\[0123456789\]\{eE\}\{0123456789\}\[0123456789\] brightgreen
+    keyword whole \{0123456789\}\[0123456789\]\{eE\}\{\-\+\}\{0123456789\}\[0123456789\] brightgreen
+    keyword whole \{0123456789\}\[0123456789\]\.\{0123456789\}\[0123456789\]\{eE\}\{0123456789\}\[0123456789\] brightgreen
+    keyword whole \{0123456789\}\[0123456789\]\.\{0123456789\}\[0123456789\]\{eE\}\{\-\+\}\{0123456789\}\[0123456789\] brightgreen
+
+    # File
+    keyword whole /
+    keyword whole \./\.
+    keyword whole \./\.\.
+    keyword whole \./\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._\-\+/\] white
+    keyword whole \.\./\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\.\-\+/\] white
+    keyword whole /\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._-\+/\] white
+
+    # HFile
+    keyword whole ~/\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._-\+/\] white
+
+    # URL
+    keyword whole \[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\]://\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._~-\+/\] white
+
+    # Separators
+    keyword { brightcyan
+    keyword } brightcyan
+    keyword ( brightcyan
+    keyword ) brightcyan
+    keyword [ brightcyan
+    keyword ] brightcyan
+    keyword , brightcyan
+    keyword : brightcyan
+    keyword ? brightcyan
+    keyword @ brightcyan
+    keyword ; brightmagenta
+
+    # Additional operators
+    keyword ! yellow
+    keyword \- yellow
+    keyword \+ yellow
+    keyword \* yellow
+    keyword / yellow
+    keyword whole < yellow
+    keyword whole > yellow
+    keyword \. yellow
+
+    # Additional keywords
+    keyword whole false brightgreen
+    keyword whole true brightgreen
+    keyword whole null brightgreen
+
+    # Builtin functions
+    keyword whole abort cyan
+    keyword whole baseNameOf cyan
+    keyword whole builtins cyan
+    keyword whole derivation cyan
+    keyword whole dirOf cyan
+    keyword whole fetchTarball cyan
+    keyword whole import cyan
+    keyword whole isNull cyan
+    keyword whole map cyan
+    keyword whole removeAttrs cyan
+    keyword whole throw cyan
+    keyword whole toString cyan
+
+# spath object
+context < > red
+
+# Strings
+context " " green
+    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+    spellcheck
+
+context '' '' green
+    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+    spellcheck
+
+# Comment contents
+context exclusive /\* \*/ brown
+    spellcheck
+
+context exclusive \# \n brown
+    spellcheck
