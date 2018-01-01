@@ -2,10 +2,9 @@
 , system ? builtins.currentSystem
 }:
 
-let
-  pkgs = import nixpkgs { inherit system; };
-in
-pkgs.mc.overrideDerivation (args: {
+with import nixpkgs { inherit system; };
+
+mc.overrideDerivation (args: {
   preConfigure = ''
     # Copy syntax file
     cp ${./nix.syntax} misc/syntax/nix.syntax
@@ -23,5 +22,5 @@ pkgs.mc.overrideDerivation (args: {
     autoreconf -f -v -i
   '';
 
-  buildInputs = args.buildInputs ++ [ pkgs.autoconf pkgs.automake pkgs.libtool ];
+  buildInputs = args.buildInputs ++ [ autoconf automake libtool ];
 })

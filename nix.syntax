@@ -34,6 +34,10 @@ context default
     keyword \/\/ yellow
     keyword \+\+ yellow
 
+    # Strings
+    keyword " green
+    keyword '' green
+
     # Numbers (integers and floats)
     keyword whole \{0123456789\}\[0123456789\] brightgreen
     keyword whole \[0123456789\]\.\{0123456789\}\[0123456789\] brightgreen
@@ -99,23 +103,23 @@ context default
     keyword whole throw cyan
     keyword whole toString cyan
 
-# spath object
-context < > red
-
-# Strings
-context " " green
-    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
-    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
-    spellcheck
-
-context '' '' green
-    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
-    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
-    spellcheck
-
 # Comment contents
 context exclusive /\* \*/ brown
     spellcheck
 
 context exclusive \# \n brown
     spellcheck
+
+# Strings
+context exclusive " " green
+    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+    spellcheck
+
+context exclusive '' '' green
+    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+    spellcheck
+
+# spath object
+context < > red

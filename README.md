@@ -4,6 +4,17 @@ This repository contains a configuration file that can be used to syntax
 highlight [Nix expressions](http://nixos.org/nix) in `mcedit`, the editor that
 comes with [Midnight Commander](https://midnight-commander.org).
 
+Features supported:
+
+* Keywords
+* Single and multi-line comments
+* Strings, indented strings
+* Integer, float, null and boolean literals
+* Separators
+* Nix builtins
+* Limited URL and path support
+* Limited anti-quotation support
+
 Installation
 ============
 There are two ways to use the syntax configuration file.
@@ -14,8 +25,8 @@ Manual installation can be done by copying the `nix.syntax` file to the
 corresponding user's configuration folder:
 
 ```bash
-mkdir -p ~/.config/mc/mcedit
-cp nix.syntax ~/.config/mc/mcedit
+$ mkdir -p ~/.config/mc/mcedit
+$ cp nix.syntax ~/.config/mc/mcedit
 ```
 
 Then we must create our own personalized version of the syntax configuration
@@ -30,7 +41,7 @@ It may happen that you see an error message about write permissions. Restore
 write permissions as follows:
 
 ```bash
-chmod 644 ~/.config/mc/mcedit/Syntax
+$ chmod 644 ~/.config/mc/mcedit/Syntax
 ```
 
 Finally, add the following lines to the configuration file above the unknown
@@ -53,7 +64,7 @@ A Nix-enabled `mc` distribution can be installed into the user profile as
 follows:
 
 ```bash
-nix-env -f default.nix -i mc
+$ nix-env -f default.nix -i mc
 ```
 
 License
