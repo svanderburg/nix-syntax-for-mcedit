@@ -114,6 +114,8 @@ context exclusive \# \n brown
 context exclusive " " green
     # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
     keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+    keyword \\\{\\'"abtnvfr\} brightgreen
+    keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
     spellcheck
 
 context exclusive '' '' green
@@ -122,4 +124,4 @@ context exclusive '' '' green
     spellcheck
 
 # spath object
-context < > red
+context exclusive < > red
