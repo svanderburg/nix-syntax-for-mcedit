@@ -10,7 +10,6 @@ context default
     # Comments
     keyword /\* brown
     keyword \*/ brown
-    keyword \# brown
 
     # Keywords
     keyword whole if yellow
@@ -34,10 +33,6 @@ context default
     keyword \/\/ yellow
     keyword \+\+ yellow
 
-    # Strings
-    keyword " green
-    keyword '' green
-
     # Numbers (integers and floats)
     keyword whole \{0123456789\}\[0123456789\] brightgreen
     keyword whole \[0123456789\]\.\{0123456789\}\[0123456789\] brightgreen
@@ -47,7 +42,7 @@ context default
     keyword whole \{0123456789\}\[0123456789\]\.\{0123456789\}\[0123456789\]\{eE\}\{0123456789\}\[0123456789\] brightgreen
     keyword whole \{0123456789\}\[0123456789\]\.\{0123456789\}\[0123456789\]\{eE\}\{\-\+\}\{0123456789\}\[0123456789\] brightgreen
 
-    # File
+    # Path
     keyword whole /
     keyword whole \./\.
     keyword whole \./\.\.
@@ -55,8 +50,11 @@ context default
     keyword whole \.\./\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\.\-\+/\] white
     keyword whole /\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._-\+/\] white
 
-    # HFile
-    keyword whole ~/\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._-\+/\] white
+    # HPath
+    keyword whole ~/\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._\-\+/\] white
+
+    # SPath
+    keyword whole <\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\,_\-\+/\]> red
 
     # URL
     keyword whole \[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\]://\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789\._~-\+/\] white
@@ -103,25 +101,26 @@ context default
     keyword whole throw cyan
     keyword whole toString cyan
 
-# Comment contents
+    # Anti quotations
+    # It is impossible to highlight nested antiquotations or antiquotations with quotes. This will only highlight the safe ones.
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@%^&\*=[]:;,|\.\-\+_/'"\\\$\#\s\]} brightgreen
+
+# Comments
 context exclusive /\* \*/ brown
     spellcheck
 
-context exclusive \# \n brown
+context \# \n brown
     spellcheck
 
 # Strings
-context exclusive " " green
-    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
-    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+context " " green
+    # It is impossible to highlight nested antiquotations or antiquotations with quotes. This will only highlight the safe ones.
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@%^&\*=[]:;,|\.\-\+_/'"\\\$\#\s\]} brightgreen
     keyword \\\{\\'"abtnvfr\} brightgreen
     keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
     spellcheck
 
-context exclusive '' '' green
-    # it is impossible to highlight all flavours of antiquotations. this will only highlight the safe ones
-    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_/\s\]} brightgreen
+context '' '' green
+    # It is impossible to highlight nested antiquotations or antiquotations with quotes. This will only highlight the safe ones.
+    keyword ${\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@%^&\*=[]:;,|\.\-\+_/'"\\\$\#\s\]} brightgreen
     spellcheck
-
-# spath object
-context exclusive < > red
