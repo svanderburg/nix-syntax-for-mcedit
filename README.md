@@ -25,8 +25,8 @@ Manual installation can be done by copying the `nix.syntax` file to the
 corresponding user's configuration folder:
 
 ```bash
-$ mkdir -p ~/.config/mc/mcedit
-$ cp nix.syntax ~/.config/mc/mcedit
+$ mkdir -p ~/.local/share/mc/syntax
+$ cp nix.syntax ~/.local/share/mc/syntax
 ```
 
 Then we must create our own personalized version of the syntax configuration
@@ -41,7 +41,7 @@ It may happen that you see an error message about write permissions. Restore
 write permissions as follows:
 
 ```bash
-$ chmod 644 ~/.config/mc/mcedit/Syntax
+$ chmod 644 ~/.local/share/mc/syntax/Syntax
 ```
 
 Finally, add the following lines to the configuration file above the unknown
@@ -49,7 +49,7 @@ entry:
 
 ```
 file ..\*\\.nix$ Nix\sExpression
-include /home/sander/.config/mc/mcedit/nix.syntax
+include /home/sander/.local/share/mc/syntax/nix.syntax
 ```
 
 Now the syntax highlighting should work.
